@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% block title %} X-Ray Prediction {% endblock %}
+{%block content %}
+<img src="{{ img_file }}" alt="X-Ray" height="400px" width="400px" />
+
+{% if result == "COVID-19" %}
+<p class="text-red-600 text-4xl font-bold">COVID-19 Pneumonia</p>
+{% elif result == "Pneumonia" %}
+<p class="text-yellow-600 text-4xl font-bold">Other Pneumonia</p>
+{% elif result == "No Finding" %}
+<p class="text-green-600 text-4xl font-bold">No Finding</p>
+{% else %}
+<p class="text-red-600 text-4xl font-bold">Error</p>
+{% endif %}
+
+<a
+    href="{% url 'home' %}"
+    class="bg-blue-500 mt-3 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded cursor-pointer"
+>
+    Predict Again
+</a>
+
+{% endblock %}
